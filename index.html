@@ -180,24 +180,22 @@
 
   <!-- n8n Chat Widget -->
   <div id="n8n-chat"></div>
-  <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-    createChat({
-      webhookUrl: 'https://n8n.sapb1mm.com/webhook/e104e40e-6134-4825-a6f0-8a646d882662/chat',
-      target: '#n8n-chat',
-      mode: 'window',
-      showWelcomeScreen: true,
-      initialMessages: ['Hi there! 👋', 'How can we assist you with SAP today?'],
-      i18n: {
-        en: {
-          title: 'SAP Solutions Pro',
-          subtitle: 'Ask us anything about SAP ERP',
-          getStarted: 'New Chat',
-          inputPlaceholder: 'Type your question…',
-        }
-      }
-    });
-  </script>
+  <script>
+  (function(d,t) {
+    var BASE_URL="https://chatwoot.vanguardmm.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'uUuE8HFAUStQxdnEkTxUEENg',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+
 
   <!-- Smooth scroll, form handling, animations -->
   <script>
