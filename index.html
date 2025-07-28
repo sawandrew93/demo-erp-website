@@ -198,35 +198,21 @@
 
 
   <!-- Smooth scroll, form handling, animations -->
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-    document.querySelector('form').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Thank you for your message! We’ll reply within 24 hours.');
-      e.target.reset();
-    });
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (window.scrollY > 100) {
-        header.style.background = 'rgba(30,60,114,0.95)';
-        header.style.backdropFilter = 'blur(10px)';
-      } else {
-        header.style.background = 'linear-gradient(135deg, #1e3c72, #2a5298)';
-        header.style.backdropFilter = 'none';
-      }
-    });
-  </script>
+<script>
+  (function(d,t) {
+    var BASE_URL="https://chatwoot.vanguardmm.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'uUuE8HFAUStQxdnEkTxUEENg',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+
 </body>
 </html>
